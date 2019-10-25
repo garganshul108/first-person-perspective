@@ -1,9 +1,9 @@
-function GameMap(width, height, rows, cols) {
+function Game(width, height, rows, cols) {
 
     this.width = width;
     this.height = height;
-    this.rows = rows;
     this.cols = cols;
+    this.rows = rows;
     this.scaleX = this.width / this.cols;
     this.scaleY = this.height / this.rows;
     this.design = [];
@@ -17,59 +17,46 @@ function GameMap(width, height, rows, cols) {
         this.design.push(row);
     }
 
-    console.log("rows", this.rows);
-    console.log("cols", this.cols);
-
-    // while (true) {
-    //     this.userX = floor(random(1, this.rows - 2));
-    //     this.userY = floor(random(1, this.cols - 2));
-    //     if (this.design[this.userX][this.userY] != 1) break;
-    // }
-
     this.flip = (v) => {
         if (v == 0) return 1;
         return 0;
     }
 
 
-    this.place = (x, y, locations) => {
-        if (!locations) this.design[x][y] = 1;
+    this.place = (y, x, locations) => {
+        if (!locations) this.design[y][x] = 1;
         else for (let v of locations) {
-            this.design[v.x][v.y] = 1;
+            this.design[v.y][v.x] = 1;
         }
     }
 
-    this.unplace = (x, y, locations) => {
-        if (!locations) this.design[x][y] = 0;
+    this.unplace = (y, x, locations) => {
+        if (!locations) this.design[y][x] = 0;
         else for (let v of locations) {
-            this.design[v.x][v.y] = 0;
+            this.design[v.y][v.x] = 0;
         }
     }
 
-    this.toggleCell = (x, y, locations) => {
-        if (!locations) this.design[x][y] = this.flip(this.design[x][y]);
+    this.toggleCell = (y, x, locations) => {
+        if (!locations) this.design[y][x] = this.flip(this.design[y][x]);
         else for (let v of locations) {
-            this.design[v.x][v.y] = this.flip(this.design[v.x][v.y]);
+            this.design[v.y][v.x] = this.flip(this.design[v.y][v.x]);
         }
     }
-
-
-
-    console.log("scales:", this.scaleX, this.scaleY);
-
-
 
     this.draw = (topLeftX, topLeftY) => {
         stroke(255);
         noFill();
         rect(topLeftX, topLeftY, this.width, this.height);
+
+        // drawing map
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
                 if (this.design[i][j] == 1) {
                     console.log("cell", i, j);
                     fill(255);
                     noStroke();
-                    rect(topLeftY + j * this.scaleX, topLeftX + i * this.scaleY, this.scaleX, this.scaleY);
+                    rect(topLeftX + j * this.scaleX, topLeftY + i * this.scaleY, this.scaleX, this.scaleY);
                 }
             }
         }
