@@ -1,6 +1,6 @@
 const defaultColor = { r: 255, g: 12, b: 100 };
 // qR => Quantum of Rotation
-const qR = PI / 10;
+const qR = Math.PI / 10;
 
 function User(x, y, dir, options) {
 
@@ -16,7 +16,7 @@ function User(x, y, dir, options) {
     // optional property
     // color
     // @object {r, g, b}
-    this.color = options.color ? options.color : defaultColor;
+    this.color = options ? (options.color ? options.color : defaultColor) : defaultColor;
 
 
     this.modDir = () => {
@@ -57,6 +57,7 @@ function User(x, y, dir, options) {
     this.moveBackward = () => {
         let originalDir = this.dir;
         this.dir += PI;
+        this.modDir();
         this.moveForward();
         this.dir = originalDir;
     }
@@ -64,6 +65,7 @@ function User(x, y, dir, options) {
     this.moveRight = () => {
         let originalDir = this.dir;
         this.dir += (-PI / 2);
+        this.modDir();
         this.moveForward();
         this.dir = originalDir;
     }
@@ -71,6 +73,7 @@ function User(x, y, dir, options) {
     this.moveLeft = () => {
         let originalDir = this.dir;
         this.dir += (PI / 2);
+        this.modDir();
         this.moveForward();
         this.dir = originalDir;
     }
