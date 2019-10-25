@@ -7,13 +7,13 @@ let cols = 20;
 function setup() {
     createCanvas(width, height);
     game = new Game(width * 0.2, height * 0.2, rows, cols);
-    // game.placeLine(0, 0, 0, cols - 1);
-    // game.placeLine(0, 0, rows - 1, 0);
-    // game.placeLine(rows - 1, cols - 1, rows - 1, 0);
-    // game.placeLine(rows - 1, cols - 1, 0, cols - 1);
+    game.placeLine(0, 0, 0, cols - 1);
+    game.placeLine(0, 0, rows - 1, 0);
+    game.placeLine(rows - 1, cols - 1, rows - 1, 0);
+    game.placeLine(rows - 1, cols - 1, 0, cols - 1);
 
     // game.placeBlock(1, 1, rows - 2, cols - 2);
-    player = new Player(1, 1, 0);
+    player = new Player(10, 10, 0);
     game.addPlayer(player);
 
 }
