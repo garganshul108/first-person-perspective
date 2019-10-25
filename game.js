@@ -91,8 +91,15 @@ function Game(width, height, rows, cols) {
             fill(this.player.color.r, this.player.color.g, this.player.color.b);
             noStroke();
             rect(topLeftX + this.player.x * this.scaleX, topLeftY + this.player.y * this.scaleY, this.scaleX, this.scaleY);
-            stroke(10, 166, 255);
-            line(topLeftX + this.player.x * this.scaleX, topLeftY + this.player.y * this.scaleY, topLeftX + this.player.x * this.scaleX + 20 * cos(this.player.dir), topLeftY + this.player.y * this.scaleY + 20 * sin(this.player.dir));
+            stroke(200, 200, 200, 15);
+            // strokeWeight(2);
+            for (let angle = this.player.dir - PI / 4; angle <= this.player.dir + PI / 4; angle += PI / 200) {
+                let r = 50;
+                line(topLeftX + this.player.x * this.scaleX + this.scaleX / 2,
+                    topLeftY + this.player.y * this.scaleY + this.scaleY / 2,
+                    topLeftX + this.player.x * this.scaleX + this.scaleX / 2 + r * cos(angle),
+                    topLeftY + this.player.y * this.scaleY + this.scaleY / 2 + r * sin(angle));
+            }
         }
 
 

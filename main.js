@@ -1,8 +1,8 @@
 let game, player;
 let width = 1000;
 let height = 700;
-let rows = 50;
-let cols = 35;
+let rows = 70;
+let cols = 100;
 
 
 function bumpingIntoWall(x, y) {

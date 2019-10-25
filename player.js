@@ -70,7 +70,7 @@ function Player(x, y, dir, options) {
         this.dir = originalDir;
     }
 
-    this.moveRight = () => {
+    this.moveLeft = () => {
         let originalDir = this.dir;
         this.dir += (-PI / 2);
         this.modDir();
@@ -78,7 +78,7 @@ function Player(x, y, dir, options) {
         this.dir = originalDir;
     }
 
-    this.moveLeft = () => {
+    this.moveRight = () => {
         let originalDir = this.dir;
         this.dir += (PI / 2);
         this.modDir();
