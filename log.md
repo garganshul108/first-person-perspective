@@ -1,5 +1,13 @@
 # LOG
 
+#### 2019-10-25 17:18:54
+
+- Player starts to move
+- Game map has drawing tools for the walls
+
+* player needed to be constrained into the map
+* no bumping into the wall
+
 #### 2019-10-25 13:13:29
 
 User:
