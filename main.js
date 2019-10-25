@@ -1,38 +1,26 @@
-
-let gameMap = undefined;
+let game;
 let width = 1000;
 let height = 700;
+let rows = 20;
+let cols = 20;
 
-/**
- * XXXXXXXXXXXXXXXXXXXX
- * X                  X
- * X                  X  
- * X                  X
- * X        X         X
- * X        X         X
- * X        X         X
- * X        XXXX      X
- * X                  X
- * X                  X  
- * XXXXXXXXXXXXXXXXXXXX
- * 
- * 
- */
-let c = 255;
 function setup() {
     createCanvas(width, height);
-    gameMap = new GameMap(width * 0.2, height * 0.2, 5, 20);
-    background(21);
-    gameMap.place(3, 4)
-    gameMap.draw(15, 1);
+    game = new Game(width * 0.2, height * 0.2, rows, cols);
+    // game.placeLine(0, 0, 0, cols - 1);
+    // game.placeLine(0, 0, rows - 1, 0);
+    // game.placeLine(rows - 1, cols - 1, rows - 1, 0);
+    // game.placeLine(rows - 1, cols - 1, 0, cols - 1);
+
+    game.placeBlock(1, 1, rows - 2, cols - 2);
+
 
 }
-
+let itr = 0;
 function draw() {
-    // // frameRate(5);
-    // background(c);
-    // c += (-5);
-    // if (c < 21) noLoop();
-    // console.log("looping", c);
-
+    background(22);
+    game.draw(5, 5);
+    if (itr > 500) noLoop();
+    console.log(itr);
+    itr++;
 }
