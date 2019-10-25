@@ -4,8 +4,10 @@
 
 - Player constrainted in bounds
 - wall bumping problem implemented
+- view/perspective angle implemented
 
-* view/perspective to be implemented
+* put on the walls
+* start the main screen view FPP
 
 #### 2019-10-25 17:18:54
 
