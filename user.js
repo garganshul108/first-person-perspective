@@ -25,4 +25,8 @@ function user(x, y, dir, color) {
         this.move(0, 1);
     }
 
+    this.rotate = (v) => {
+        this.dir
+    }
+
 }
