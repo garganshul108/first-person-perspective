@@ -4,6 +4,11 @@ let height = 700;
 let rows = 20;
 let cols = 20;
 
+
+function bumpingIntoWall(x, y) {
+    return game.design[y][x] !== 0;
+}
+
 function setup() {
     createCanvas(width, height);
     game = new Game(width * 0.2, height * 0.2, rows, cols);
@@ -13,7 +18,15 @@ function setup() {
     game.placeLine(rows - 1, cols - 1, 0, cols - 1);
 
     // game.placeBlock(1, 1, rows - 2, cols - 2);
-    player = new Player(10, 10, 0);
+    let px, py;
+
+    while (true) {
+        px = floor(random(0, cols - 1));
+        py = floor(random(0, rows - 1));
+        if (!bumpingIntoWall(px, py)) break;
+    }
+
+    player = new Player(px, py, 0);
     game.addPlayer(player);
 
 }
@@ -23,11 +36,12 @@ function inBounds(v, low, high) {
     return v <= high && v >= low;
 }
 
+
 function advanceMove(move) {
     let iX = player.x;
     let iY = player.y;
     move();
-    if (!inBounds(player.x, 0, cols - 1) || !inBounds(player.y, 0, rows - 1) || game.design[player.y][player.x] !== 0) {
+    if (!inBounds(player.x, 0, cols - 1) || !inBounds(player.y, 0, rows - 1) || bumpingIntoWall(player.x, player.y)) {
         player.x = iX;
         player.y = iY;
         console.log("reverted");
