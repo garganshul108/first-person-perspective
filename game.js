@@ -1,3 +1,5 @@
+
+let viewAngle = PI / 2;
 function Game(width, height, rows, cols) {
 
     this.width = width;
@@ -93,7 +95,7 @@ function Game(width, height, rows, cols) {
             rect(topLeftX + this.player.x * this.scaleX, topLeftY + this.player.y * this.scaleY, this.scaleX, this.scaleY);
             stroke(200, 200, 200, 15);
             // strokeWeight(2);
-            for (let angle = this.player.dir - PI / 4; angle <= this.player.dir + PI / 4; angle += PI / 200) {
+            for (let angle = this.player.dir - viewAngle / 2; angle <= this.player.dir + viewAngle / 2; angle += PI / 200) {
                 let r = 50;
                 line(topLeftX + this.player.x * this.scaleX + this.scaleX / 2,
                     topLeftY + this.player.y * this.scaleY + this.scaleY / 2,

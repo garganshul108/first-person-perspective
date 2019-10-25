@@ -4,6 +4,8 @@ let height = 700;
 let rows = 70;
 let cols = 100;
 
+let viewAngle = PI / 2;
+
 
 function bumpingIntoWall(x, y) {
     return game.design[y][x] !== 0;
@@ -17,13 +19,18 @@ function setup() {
     game.placeLine(rows - 1, cols - 1, rows - 1, 0);
     game.placeLine(rows - 1, cols - 1, 0, cols - 1);
 
-    // game.placeBlock(1, 1, rows - 2, cols - 2);
-    let px, py;
+    game.placeBlock(11, 10, 5, 7);
 
-    while (true) {
+    // initial positions of a player
+    let px, py;
+    let safeTries = 1000;
+    while (safeTries--) {
         px = floor(random(0, cols - 1));
         py = floor(random(0, rows - 1));
         if (!bumpingIntoWall(px, py)) break;
+    }
+    if (safeTries === 0) {
+        location.reload();
     }
 
     player = new Player(px, py, random(0, TWO_PI));
@@ -76,7 +83,4 @@ function draw() {
 
 
     game.draw(5, 5);
-    // if (itr > 500) noLoop();
-    // console.log(itr);
-    // itr++;
 }
