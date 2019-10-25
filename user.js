@@ -1,32 +1,34 @@
-function user(x, y, dir, color) {
+const defaultColor = { r: 255, g: 12, b: 100 };
+// qR => Quantum of Rotation
+const qR = PI / 10;
+
+function User(x, y, dir, options) {
+
+    // initial location of the user
+    // @coordinate points(x, y)
     this.x = x;
     this.y = y;
+
+    // direction facing => used for movement
+    // @angle
     this.dir = dir;
-    this.color = color;
 
-    this.move = (vx, vy) => {
-        this.x = this.x + vx;
-        this.y = this.y + vy;
-    }
+    // optional property
+    // color
+    // @object {r, g, b}
+    this.color = options.color ? options.color : defaultColor;
 
-    this.right = () => {
-        this.move(1, 0);
-    }
-
-    this.left = () => {
-        this.move(-1, 0);
-    }
-
-    this.up = () => {
-        this.move(0, -1);
-    }
-
-    this.down = () => {
-        this.move(0, 1);
-    }
 
     this.rotate = (v) => {
-        this.dir
+        this.dir += v;
+    }
+
+    this.rotateRight = () => {
+        this.rotate(-qR);
+    }
+
+    this.rotateLeft = () => {
+        this.rotate(qR);
     }
 
 }
