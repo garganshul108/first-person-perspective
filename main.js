@@ -19,6 +19,21 @@ function setup() {
 }
 let itr = 0;
 
+function inBounds(v, low, high) {
+    return v <= high && v >= low;
+}
+
+function advanceMove(move) {
+    let iX = player.x;
+    let iY = player.y;
+    move();
+    if (!inBounds(player.x, 0, cols - 1) || !inBounds(player.y, 0, rows - 1) || game.design[player.y][player.x] !== 0) {
+        player.x = iX;
+        player.y = iY;
+        console.log("reverted");
+    }
+}
+
 function keyPressed() {
     if (keyCode === 65) {
         player.rotateRight();
@@ -27,16 +42,16 @@ function keyPressed() {
         player.rotateLeft();
     }
     else if (keyCode === UP_ARROW) {
-        player.moveForward();
+        advanceMove(player.moveForward);
     }
     else if (keyCode === DOWN_ARROW) {
-        player.moveBackward();
+        advanceMove(player.moveBackward);
     }
     else if (keyCode === RIGHT_ARROW) {
-        player.moveRight();
+        advanceMove(player.moveRight);
     }
     else if (keyCode === LEFT_ARROW) {
-        player.moveLeft();
+        advanceMove(player.moveLeft);
     }
 
 }
