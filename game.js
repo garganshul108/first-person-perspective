@@ -7,6 +7,7 @@ function Game(width, height, rows, cols) {
     this.scaleX = this.width / this.cols;
     this.scaleY = this.height / this.rows;
     this.design = [];
+    this.player = undefined;
 
     // initialization of the map
     for (let i = 0; i < this.rows; i++) {
@@ -64,6 +65,11 @@ function Game(width, height, rows, cols) {
         }
     }
 
+
+    this.addPlayer = (player) => {
+        this.player = player;
+    }
+
     this.draw = (topLeftX, topLeftY) => {
         stroke(255);
         noFill();
@@ -81,15 +87,16 @@ function Game(width, height, rows, cols) {
         }
 
         // drawing user
-        // console.log("user cell", this.userX, this.userY);
-        // fill(255, 10, 121);
-        // noStroke();
-        // rect(topLeftX + this.userX * this.scaleX, topLeftY + this.userY * this.scaleY, this.scaleX, this.scaleY);
+        if (this.player) {
+            fill(this.player.color.r, this.player.color.g, this.player.color.b);
+            noStroke();
+            rect(topLeftX + this.player.x * this.scaleX, topLeftY + this.player.y * this.scaleY, this.scaleX, this.scaleY);
+            stroke(10, 166, 255);
+            line(topLeftX + this.player.x * this.scaleX, topLeftY + this.player.y * this.scaleY, topLeftX + this.player.x * this.scaleX + 20 * cos(this.player.dir), topLeftY + this.player.y * this.scaleY + 20 * sin(this.player.dir));
+        }
 
 
-
-
-        console.log("map is drawn");
+        // console.log("map is drawn");
     }
 
 

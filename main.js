@@ -1,4 +1,4 @@
-let game;
+let game, player;
 let width = 1000;
 let height = 700;
 let rows = 20;
@@ -12,15 +12,42 @@ function setup() {
     // game.placeLine(rows - 1, cols - 1, rows - 1, 0);
     // game.placeLine(rows - 1, cols - 1, 0, cols - 1);
 
-    game.placeBlock(1, 1, rows - 2, cols - 2);
-
+    // game.placeBlock(1, 1, rows - 2, cols - 2);
+    player = new Player(1, 1, 0);
+    game.addPlayer(player);
 
 }
 let itr = 0;
+
+function keyPressed() {
+    if (keyCode === 65) {
+        player.rotateRight();
+    }
+    else if (keyCode === 68) {
+        player.rotateLeft();
+    }
+    else if (keyCode === UP_ARROW) {
+        player.moveForward();
+    }
+    else if (keyCode === DOWN_ARROW) {
+        player.moveBackward();
+    }
+    else if (keyCode === RIGHT_ARROW) {
+        player.moveRight();
+    }
+    else if (keyCode === LEFT_ARROW) {
+        player.moveLeft();
+    }
+
+}
+
 function draw() {
     background(22);
+
+
+
     game.draw(5, 5);
-    if (itr > 500) noLoop();
-    console.log(itr);
-    itr++;
+    // if (itr > 500) noLoop();
+    // console.log(itr);
+    // itr++;
 }

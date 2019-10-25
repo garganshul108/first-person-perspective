@@ -1,8 +1,8 @@
 const defaultColor = { r: 255, g: 12, b: 100 };
 // qR => Quantum of Rotation
-const qR = Math.PI / 10;
+const qR = Math.PI / 30;
 
-function User(x, y, dir, options) {
+function Player(x, y, dir, options) {
 
     // initial location of the user
     // @coordinate points(x, y)
@@ -20,13 +20,17 @@ function User(x, y, dir, options) {
 
 
     this.modDir = () => {
+        this.dir = this.dir + 2 * TWO_PI;
         this.dir = this.dir - (floor(this.dir / TWO_PI) * TWO_PI);
+        if (this.dir < 0) this.dir = this.dir + TWO_PI;
     }
 
 
     this.rotate = (v) => {
-        this.dir += v;
+        this.dir = this.dir + v;
         this.modDir();
+
+        console.log("dir", this.dir);
     }
 
     this.rotateRight = () => {
@@ -38,20 +42,24 @@ function User(x, y, dir, options) {
     }
 
     this.move = (vx, vy) => {
+        console.log("vx vy", vx, vy);
         this.x += vx;
-        this.v += vy;
+        this.y += vy;
+        console.log("x y", this.x, this.y);
     }
 
     this.moveForward = () => {
         let dx = cos(this.dir);
         let dy = sin(this.dir);
-        if (abs(dx) > abs(dy)) {
-            if (dx > 0) this.move(1, 0);
-            else this.move(-1, 0);
-        } else {
-            if (dy > 0) this.move(0, -1);
-            else this.move(0, 1);
-        }
+        if (this.dir <= PI / 8) this.move(1, 0);
+        else if (this.dir <= PI / 8 + PI / 4) this.move(1, 1);
+        else if (this.dir <= PI / 8 + PI / 2) this.move(0, 1);
+        else if (this.dir <= PI / 8 + 3 * PI / 4) this.move(-1, 1);
+        else if (this.dir <= PI / 8 + PI) this.move(-1, 0);
+        else if (this.dir <= PI / 8 + 5 * PI / 4) this.move(-1, -1);
+        else if (this.dir <= PI / 8 + 3 * PI / 2) this.move(0, -1);
+        else if (this.dir <= PI / 8 + 7 * PI / 4) this.move(1, -1);
+        else this.move(1, 0);
     }
 
     this.moveBackward = () => {
