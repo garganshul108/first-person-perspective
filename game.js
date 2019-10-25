@@ -30,6 +30,26 @@ function Game(width, height, rows, cols) {
         }
     }
 
+    this.placeLine = (y1, x1, y2, x2) => {
+        if (y1 == y2) {
+            for (let j = min(x1, x2); j <= max(x1, x2); j++) {
+                this.place(y1, j);
+            }
+        } else if (x1 == x2) {
+            for (let i = min(y1, y2); i <= max(y1, y2); i++) {
+                this.place(i, x1);
+            }
+        }
+    }
+
+    this.placeBlock = (y1, x1, y2, x2) => {
+        for (let i = min(y1, y2); i <= max(y1, y2); i++) {
+            for (let j = min(x1, x2); j <= max(x1, x2); j++) {
+                this.place(i, j);
+            }
+        }
+    }
+
     this.unplace = (y, x, locations) => {
         if (!locations) this.design[y][x] = 0;
         else for (let v of locations) {
@@ -53,7 +73,6 @@ function Game(width, height, rows, cols) {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
                 if (this.design[i][j] == 1) {
-                    console.log("cell", i, j);
                     fill(255);
                     noStroke();
                     rect(topLeftX + j * this.scaleX, topLeftY + i * this.scaleY, this.scaleX, this.scaleY);
