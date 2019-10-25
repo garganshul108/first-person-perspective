@@ -1,5 +1,12 @@
 # LOG
 
+#### 2019-10-26 02:10:46
+
+- Player constrainted in bounds
+- wall bumping problem implemented
+
+* view/perspective to be implemented
+
 #### 2019-10-25 17:18:54
 
 - Player starts to move

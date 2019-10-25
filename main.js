@@ -1,8 +1,8 @@
 let game, player;
 let width = 1000;
 let height = 700;
-let rows = 20;
-let cols = 20;
+let rows = 50;
+let cols = 35;
 
 
 function bumpingIntoWall(x, y) {
@@ -26,7 +26,7 @@ function setup() {
         if (!bumpingIntoWall(px, py)) break;
     }
 
-    player = new Player(px, py, 0);
+    player = new Player(px, py, random(0, TWO_PI));
     game.addPlayer(player);
 
 }
