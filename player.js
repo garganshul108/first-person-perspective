@@ -30,7 +30,7 @@ function Player(x, y, dir, options) {
         this.dir = this.dir + v;
         this.modDir();
 
-        console.log("dir", this.dir);
+        // console.log("dir", this.dir);
     }
 
     this.rotateRight = () => {
@@ -42,10 +42,10 @@ function Player(x, y, dir, options) {
     }
 
     this.move = (vx, vy) => {
-        console.log("vx vy", vx, vy);
+        // console.log("vx vy", vx, vy);
         this.x += vx;
         this.y += vy;
-        console.log("x y", this.x, this.y);
+        // console.log("x y", this.x, this.y);
     }
 
     this.moveForward = () => {

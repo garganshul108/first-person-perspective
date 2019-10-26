@@ -3,8 +3,12 @@ let width = 1000;
 let height = 700;
 let rows = 70;
 let cols = 100;
+let scaleX = 10;
+let scaleY = 10;
+let topLeftX = 5;
+let topLeftY = 5;
 
-let viewAngle = PI / 2;
+let viewAngle = Math.PI / 2;
 
 
 function bumpingIntoWall(x, y) {
@@ -19,7 +23,7 @@ function setup() {
     game.placeLine(rows - 1, cols - 1, rows - 1, 0);
     game.placeLine(rows - 1, cols - 1, 0, cols - 1);
 
-    game.placeBlock(11, 10, 5, 7);
+    game.placeBlock(50, 20, 5, 7);
 
     // initial positions of a player
     let px, py;
@@ -79,8 +83,32 @@ function keyPressed() {
 
 function draw() {
     background(22);
+    let dAngle = PI / 200;
+    // console.log("dAngle", dAngle);
+    let noOfDivisions = floor(viewAngle / dAngle);
+    // console.log("noOfDiv", noOfDivisions);
+    let dWidth = width / noOfDivisions;
+    // console.log("dWidth", dWidth);
+    let divCount = 0;
+    for (let angle = player.dir - viewAngle / 2; angle <= player.dir + viewAngle / 2; angle += dAngle) {
+        // console.log("divCount", divCount);
+        let d = 10000000;
+        for (let r = 0.5; r < 10000; r += 0.5) {
+            let xx = floor((player.x * scaleX + scaleX / 2 + r * cos(angle)) / scaleX);
+            let yy = floor((player.y * scaleY + scaleY / 2 + r * sin(angle)) / scaleY);
+            // console.log("xx yy", xx, yy);
+            if (inBounds(xx, 0, cols - 1) && inBounds(yy, 0, rows - 1) && game.design[yy][xx] === 1) {
+                d = dist(player.x, player.y, xx, yy);
+                break;
+            }
+        }
+        rectMode(CENTER);
+        fill(255, 255, 255, 255 / (1 + d));
+        rect(divCount * dWidth + dWidth / 2, height / 2, dWidth, height / (d));
+        rectMode(CORNER);
+        divCount++;
+    }
 
 
-
-    game.draw(5, 5);
+    game.draw(topLeftX, topLeftY);
 }
