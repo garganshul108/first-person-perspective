@@ -56,3 +56,7 @@ Major issue with the perspective representation is FISHEYE Effect
 ## :star2: Appeal
 
 Want to contribute, learn, or even just liked the animation, do star the repository! :blush:
+
+## :scroll: License
+
+[MIT](https://github.com/garganshul108/first-person-perspective/blob/master/LICENSE) © [Anshul Garg](https://github.com/garganshul108)
