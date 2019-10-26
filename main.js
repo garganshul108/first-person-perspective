@@ -132,7 +132,7 @@ function draw() {
         rectMode(CENTER);
         // noStroke();
         let op = floor(255 / (pow(d, 3 / 2)));
-        console.log("op", op);
+        // console.log("op", op);
         fill(255, 255, 255, op);
         let cx = divCount * dWidth + dWidth / 2;
         let cy = height / 2;
@@ -142,14 +142,33 @@ function draw() {
         rect(cx, cy, w, h);
         rectMode(CORNER);
 
-        // let color1 = color(255,0,0,255);
-        // let color2 = color(0,0,0,255);
-        // let slabHeight = 20;
-        // for(let i = 0 ; i <= cy - h/2 - slabHeight; i += slabHeight){
-        //     noStroke();
-        //     fill
-        //     rect()
-        // }
+        // DRAWING THE FLOOR
+        let floorColor1 = color(255, 0, 0, 55); // red near
+        let floorColor2 = color(0, 0, 0, 55); // black dimished far
+        let floorSlabHeight = 20;
+        let noOfFloorSlabs = floor(((height - h) / 2) / floorSlabHeight);
+        let mixValue = 0;
+        for (let i = 0; i < noOfFloorSlabs; i += 1) {
+            // noStroke();
+            fill(lerpColor(floorColor1, floorColor2, mixValue));
+            rect(divCount * dWidth, height - (i + 1) * floorSlabHeight, dWidth, floorSlabHeight);
+            mixValue += 0.1;
+        }
+
+        // DRAWING THE CEILING
+        let ceilingColor1 = color(255, 0, 0, 55); // red near
+        let ceilingColor2 = color(0, 0, 0, 55); // black dimished far
+        let ceilingSlabHeight = 20;
+        let noOfCeilingSlabs = floor(((height - h) / 2) / ceilingSlabHeight);
+        mixValue = 0;
+        for (let i = 0; i < noOfCeilingSlabs; i += 1) {
+            // noStroke();
+            fill(lerpColor(ceilingColor1, ceilingColor2, mixValue));
+            rect(divCount * dWidth, (i) * ceilingSlabHeight, dWidth, ceilingSlabHeight);
+            mixValue += 0.1;
+        }
+
+
 
 
         divCount++;
