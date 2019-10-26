@@ -17,6 +17,12 @@ Games like Counter Strike, PUBG, GTA Vice City has such camera view for the play
 - Run index.html
 - That's it!!
 ```
+## :video_game: Game Controls
+
+Controls are pretty simple
+- Arrow keys for movement along the facing directions
+- 'A' to turn left
+- 'D' to turn right
 
 ## :beginner: Beginning till the End
 
