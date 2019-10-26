@@ -167,7 +167,7 @@ function draw() {
         // console.log("d", d);
 
         rectMode(CENTER);
-        // noStroke();
+        stroke(50);
         let op = floor(255 / (pow(d, 3 / 2)));
         // console.log("op", op);
         fill(255, 255, 255, op);
@@ -186,7 +186,7 @@ function draw() {
         let noOfFloorSlabs = floor(((height - h) / 2) / floorSlabHeight);
         let mixValue = 0;
         for (let i = 0; i < noOfFloorSlabs; i += 1) {
-            // noStroke();
+            noStroke();
             fill(lerpColor(floorColor1, floorColor2, mixValue));
             rect(divCount * dWidth, height - (i + 1) * floorSlabHeight, dWidth, floorSlabHeight);
             mixValue += 0.1;
@@ -199,7 +199,7 @@ function draw() {
         let noOfCeilingSlabs = floor(((height - h) / 2) / ceilingSlabHeight);
         mixValue = 0;
         for (let i = 0; i < noOfCeilingSlabs; i += 1) {
-            // noStroke();
+            noStroke();
             fill(lerpColor(ceilingColor1, ceilingColor2, mixValue));
             rect(divCount * dWidth, (i) * ceilingSlabHeight, dWidth, ceilingSlabHeight);
             mixValue += 0.1;
