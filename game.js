@@ -1,5 +1,5 @@
 
-viewAngle = Math.PI / 2;
+viewAngle = 3 * Math.PI / 4;
 function Game(width, height, rows, cols) {
 
     this.width = width;

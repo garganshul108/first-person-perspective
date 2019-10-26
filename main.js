@@ -10,7 +10,7 @@ let topLeftY = 5;
 let maxDiagonal = 1000;
 let looping = true;
 
-let viewAngle = Math.PI / 2;
+let viewAngle = 3 * Math.PI / 4;
 
 
 function bumpingIntoWall(x, y) {
@@ -25,6 +25,10 @@ function setup() {
     game.placeLine(0, 0, rows - 1, 0);
     game.placeLine(rows - 1, cols - 1, rows - 1, 0);
     game.placeLine(rows - 1, cols - 1, 0, cols - 1);
+    game.placeLine(0, 5, 20, 5);
+    game.placeLine(0, 10, 20, 10);
+    game.placeLine(0, 20, 20, 20);
+    game.placeLine(0, 15, 20, 15);
 
     // game.placeBlock(25, 10, 2, 3);
     // game.unplaceBlock(4, 5, 22, 10);
@@ -106,7 +110,7 @@ function draw() {
     // console.log("dWidth", dWidth);
 
     let divCount = 0;
-    for (let angle = player.dir + viewAngle / 2; angle >= player.dir - viewAngle / 2; angle -= dAngle) {
+    for (let angle = player.dir - viewAngle / 2; angle <= player.dir + viewAngle / 2; angle += dAngle) {
         // console.log("divCount", divCount);
         let d = maxDiagonal;
         for (let r = 0.1; r < maxDiagonal + 0.1; r += 0.1) {
@@ -127,14 +131,14 @@ function draw() {
 
         rectMode(CENTER);
         // noStroke();
-        let op = floor(255 - map(d, 0, maxDiagonal, 0, 255));
-        // console.log(op);
+        let op = floor(255 / (pow(d, 3 / 2)));
+        console.log("op", op);
         fill(255, 255, 255, op);
         let cx = divCount * dWidth + dWidth / 2;
         let cy = height / 2;
         let w = dWidth;
-        let h = height * (1 / d);
-        console.log("h", h);
+        let h = height * (2 / d);
+        // console.log("h", h);
         rect(cx, cy, w, h);
         rectMode(CORNER);
 
