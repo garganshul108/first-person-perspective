@@ -1,5 +1,14 @@
 # LOG
 
+#### 2019-10-26 20:21:54
+
+- View/Perspective Complete
+
+* Build house on map
+* clean the code
+* optimise loops
+* adjust opacity and distance formula
+
 #### 2019-10-26 02:10:46
 
 - Player constrainted in bounds
