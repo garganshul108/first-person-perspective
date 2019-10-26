@@ -1,5 +1,9 @@
 # LOG
 
+#### 2019-10-26 23:12:08
+
+- Problem: FISH EYE EFFECT due to inverse distance formula
+
 #### 2019-10-26 22:27:28
 
 - red coloring of floor and ceiling done
