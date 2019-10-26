@@ -20,9 +20,10 @@ Games like Counter Strike, PUBG, GTA Vice City has such camera view for the play
 ## :video_game: Game Controls
 
 Controls are pretty simple
-- Arrow keys for movement along the facing directions
+- Arrow keys for movement along and orthogonal to the facing direction
 - 'A' to turn left
 - 'D' to turn right
+- Use map to keep track of the position
 
 ## :beginner: Beginning till the End
 
