@@ -60,6 +60,14 @@ function Game(width, height, rows, cols) {
         }
     }
 
+    this.unplaceBlock = (y1, x1, y2, x2) => {
+        for (let i = min(y1, y2); i <= max(y1, y2); i++) {
+            for (let j = min(x1, x2); j <= max(x1, x2); j++) {
+                this.unplace(i, j);
+            }
+        }
+    }
+
     this.toggleCell = (y, x, locations) => {
         if (!locations) this.design[y][x] = this.flip(this.design[y][x]);
         else for (let v of locations) {
@@ -74,7 +82,7 @@ function Game(width, height, rows, cols) {
 
     this.draw = (topLeftX, topLeftY) => {
         stroke(255);
-        noFill();
+        fill(10);
         rect(topLeftX, topLeftY, this.width, this.height);
 
         // drawing map
