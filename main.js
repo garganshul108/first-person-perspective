@@ -10,7 +10,7 @@ let topLeftY = 5;
 let maxDiagonal = 1000;
 let looping = true;
 
-let viewAngle = 3 * Math.PI / 4;
+let viewAngle = 3.0 * Math.PI / 4.0;
 
 
 function bumpingIntoWall(x, y) {
@@ -174,7 +174,7 @@ function draw() {
         let cx = divCount * dWidth + dWidth / 2;
         let cy = height / 2;
         let w = dWidth;
-        let h = height * (2 / d);
+        let h = height * (2 / (d * pow(cos(angle - player.dir), 0)));
         // console.log("h", h);
         rect(cx, cy, w, h);
         rectMode(CORNER);
