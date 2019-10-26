@@ -17,22 +17,59 @@ function bumpingIntoWall(x, y) {
     return game.design[y][x] !== 0;
 }
 
+function setMap() {
+
+    let lines = [
+        [10, 20, 10, 60],
+        [10, 70, 10, 90],
+        [10, 20, 55, 20],
+        [60, 20, 60, 40],
+        [60, 50, 60, 60],
+        [60, 60, 50, 60],
+        [40, 60, 30, 60],
+        [60, 60, 60, 70],
+        [60, 70, 60, 90],
+        [60, 90, 10, 90],
+        [40, 20, 40, 30],
+        [50, 35, 50, 40],
+        [45, 35, 50, 35],
+        [25, 30, 25, 40],
+        [25, 35, 45, 35],
+        [20, 40, 40, 40],
+        [50, 40, 60, 40],
+        [20, 45, 20, 65],
+        [20, 55, 35, 55],
+        [30, 50, 40, 50],
+        [40, 50, 40, 60],
+        [45, 80, 55, 80],
+        [50, 70, 60, 70],
+        [30, 75, 35, 75],
+        [20, 70, 30, 70],
+        [50, 85, 50, 90],
+        [30, 75, 30, 90],
+        [20, 70, 20, 90],
+        [40, 70, 40, 90],
+        [50, 0, 50, 10],
+        [55, 0, 55, 10],
+        [60, 0, 60, 10],
+        [65, 0, 65, 10],
+        [69, 0, 69, 99],
+        [0, 0, 69, 0],
+        [0, 0, 0, 99],
+        [0, 99, 69, 99]
+    ];
+
+    for (let l of lines) {
+        game.placeLine(l[0], l[1], l[2], l[3]);
+    }
+
+}
+
 function setup() {
     createCanvas(width, height);
     game = new Game(width * 0.2, height * 0.2, rows, cols);
     maxDiagonal = dist(0, 0, width * 0.2, height * 0.2);
-    game.placeLine(0, 0, 0, cols - 1);
-    game.placeLine(0, 0, rows - 1, 0);
-    game.placeLine(rows - 1, cols - 1, rows - 1, 0);
-    game.placeLine(rows - 1, cols - 1, 0, cols - 1);
-    game.placeLine(0, 5, 20, 5);
-    game.placeLine(0, 10, 20, 10);
-    game.placeLine(0, 20, 20, 20);
-    game.placeLine(0, 15, 20, 15);
-
-    // game.placeBlock(25, 10, 2, 3);
-    // game.unplaceBlock(4, 5, 22, 10);
-
+    setMap();
     // initial positions of a player
     let px, py;
     let safeTries = 1000;
