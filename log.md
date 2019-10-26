@@ -1,5 +1,12 @@
 # LOG
 
+#### 2019-10-26 22:27:28
+
+- red coloring of floor and ceiling done
+
+* improve colors possible
+* intergrate map and colored cieling-floor together
+
 #### 2019-10-26 21:30:23
 
 - design the ceiling and the floor effect
