@@ -7,6 +7,8 @@ let scaleX = 10;
 let scaleY = 10;
 let topLeftX = 5;
 let topLeftY = 5;
+let maxDiagonal = 1000;
+let looping = true;
 
 let viewAngle = Math.PI / 2;
 
@@ -18,12 +20,14 @@ function bumpingIntoWall(x, y) {
 function setup() {
     createCanvas(width, height);
     game = new Game(width * 0.2, height * 0.2, rows, cols);
+    maxDiagonal = dist(0, 0, width * 0.2, height * 0.2);
     game.placeLine(0, 0, 0, cols - 1);
     game.placeLine(0, 0, rows - 1, 0);
     game.placeLine(rows - 1, cols - 1, rows - 1, 0);
     game.placeLine(rows - 1, cols - 1, 0, cols - 1);
 
-    game.placeBlock(50, 20, 5, 7);
+    // game.placeBlock(25, 10, 2, 3);
+    // game.unplaceBlock(4, 5, 22, 10);
 
     // initial positions of a player
     let px, py;
@@ -59,7 +63,15 @@ function advanceMove(move) {
     }
 }
 
+function keyReleased() {
+    setTimeout(() => {
+        noLoop();
+        looping = false;
+    }, 1000 * 2);
+}
+
 function keyPressed() {
+    if (!looping) { loop(); looping = true; }
     if (keyCode === 65) {
         player.rotateRight();
     }
@@ -82,33 +94,62 @@ function keyPressed() {
 }
 
 function draw() {
+    // console.log("drawing");
+
     background(22);
+
     let dAngle = PI / 200;
     // console.log("dAngle", dAngle);
     let noOfDivisions = floor(viewAngle / dAngle);
     // console.log("noOfDiv", noOfDivisions);
     let dWidth = width / noOfDivisions;
     // console.log("dWidth", dWidth);
+
     let divCount = 0;
-    for (let angle = player.dir - viewAngle / 2; angle <= player.dir + viewAngle / 2; angle += dAngle) {
+    for (let angle = player.dir + viewAngle / 2; angle >= player.dir - viewAngle / 2; angle -= dAngle) {
         // console.log("divCount", divCount);
-        let d = 10000000;
-        for (let r = 0.5; r < 10000; r += 0.5) {
-            let xx = floor((player.x * scaleX + scaleX / 2 + r * cos(angle)) / scaleX);
-            let yy = floor((player.y * scaleY + scaleY / 2 + r * sin(angle)) / scaleY);
+        let d = maxDiagonal;
+        for (let r = 0.1; r < maxDiagonal + 0.1; r += 0.1) {
+            let xx = player.x + floor((r * cos(angle)) / scaleX);
+            let yy = player.y + floor((r * sin(angle)) / scaleY);
             // console.log("xx yy", xx, yy);
-            if (inBounds(xx, 0, cols - 1) && inBounds(yy, 0, rows - 1) && game.design[yy][xx] === 1) {
+            if (!(inBounds(xx, 0, cols - 1) && inBounds(yy, 0, rows - 1))) {
+                break;
+            }
+            else if (inBounds(xx, 0, cols - 1) && inBounds(yy, 0, rows - 1) && game.design[yy][xx] === 1) {
                 d = dist(player.x, player.y, xx, yy);
                 break;
             }
+
         }
+
+        // console.log("d", d);
+
         rectMode(CENTER);
-        fill(255, 255, 255, 255 / (1 + d));
-        rect(divCount * dWidth + dWidth / 2, height / 2, dWidth, height / (d));
+        // noStroke();
+        let op = floor(255 - map(d, 0, maxDiagonal, 0, 255));
+        // console.log(op);
+        fill(255, 255, 255, op);
+        let cx = divCount * dWidth + dWidth / 2;
+        let cy = height / 2;
+        let w = dWidth;
+        let h = height * (1 / d);
+        console.log("h", h);
+        rect(cx, cy, w, h);
         rectMode(CORNER);
+
+        // let color1 = color(255,0,0,255);
+        // let color2 = color(0,0,0,255);
+        // let slabHeight = 20;
+        // for(let i = 0 ; i <= cy - h/2 - slabHeight; i += slabHeight){
+        //     noStroke();
+        //     fill
+        //     rect()
+        // }
+
+
         divCount++;
     }
-
 
     game.draw(topLeftX, topLeftY);
 }
