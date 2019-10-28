@@ -1,7 +1,7 @@
 # :video_game: First Person Perspective
 
 In video games, first person is any graphical perspective rendered from the viewpoint of the player's character, or a viewpoint from the cockpit or front seat of a vehicle driven by the character. Many genres incorporate first-person perspectives, among them adventure games, driving, sailing, and flight simulators. Most notable is the first-person shooter, in which the graphical perspective is an integral component of the gameplay.
-Games like Counter Strike, PUBG, GTA Vice City has such camera view for the player.
+Games like Counter Strike, PUBG, GTA Vice City has such camera view for the player. (says Wikipedia)
 
 - This is a basic FPP walk through.
 - A map is designed to demonstrate the view
