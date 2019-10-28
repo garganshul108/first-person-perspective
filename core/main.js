@@ -1,16 +1,10 @@
 let game, player;
-let width = 1000;
-let height = 700;
-let rows = 70;
-let cols = 100;
 let scaleX = 10;
 let scaleY = 10;
 let topLeftX = 5;
 let topLeftY = 5;
 let maxDiagonal = 1000;
 let looping = true;
-
-let viewAngle = 3.0 * Math.PI / 4.0;
 
 
 function bumpingIntoWall(x, y) {
@@ -19,7 +13,7 @@ function bumpingIntoWall(x, y) {
 
 function setMap() {
 
-    let lines = [
+    const lines = [
         [10, 20, 10, 60],
         [10, 70, 10, 90],
         [10, 20, 55, 20],
@@ -57,7 +51,8 @@ function setMap() {
         [0, 0, 69, 0],
         [0, 0, 0, 99],
         [0, 99, 69, 99]
-    ];
+    ]
+        ;
 
     for (let l of lines) {
         game.placeLine(l[0], l[1], l[2], l[3]);
@@ -100,7 +95,6 @@ function advanceMove(move) {
     if (!inBounds(player.x, 0, cols - 1) || !inBounds(player.y, 0, rows - 1) || bumpingIntoWall(player.x, player.y)) {
         player.x = iX;
         player.y = iY;
-        console.log("reverted");
     }
 }
 
