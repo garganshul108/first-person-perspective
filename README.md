@@ -42,7 +42,11 @@ Here is the first shot of this project
 - Then advanced map was designed for the full view
 - Colors were added to give a good looking finish
 
-## :hammer: Issues
+## :star2: Issues and Contributions
+- Want to contribute and be a part of this small project. Check the simplest contributing guidelines [here](https://github.com/garganshul108/first-person-perspective/blob/master/CONTRIBUTING.md)
+- Contributions don't have to be very special. From 'simple typos' to 'serious bugs' all kinds of contributions are welcome! :smile:
+
+## :hammer: Major Issues
 
 Major issue with the perspective representation is FISHEYE Effect
 
