@@ -9,7 +9,7 @@
 - red coloring of floor and ceiling done
 
 * improve colors possible
-* intergrate map and colored cieling-floor together
+* integrate map and colored ceiling-floor together
 
 #### 2019-10-26 21:30:23
 
@@ -26,7 +26,7 @@
 
 #### 2019-10-26 02:10:46
 
-- Player constrainted in bounds
+- Player constrained in bounds
 - wall bumping problem implemented
 - view/perspective angle implemented
 
@@ -45,6 +45,6 @@
 
 User:
 
-- will move in direcion of view
+- will move in direction of view
 - keys 'a' and 'd' will help in rotation/ change in direction
 - arrow keys will help in movement along the direction
