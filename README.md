@@ -58,11 +58,11 @@ Major issue with the perspective representation is FISHEYE Effect
 - [x] Lots of Maths
 - [x] Perspective Designing
 - [x] Projections and Shading
-- [x] Javascript (implemntation)
+- [x] Javascript (implementation)
 - [x] Hit and Trial
 - [x] Sweat and Blood
 
-## :books: Bibliogarphy
+## :books: Bibliography
 
 - [Wikipedia](<https://en.wikipedia.org/wiki/First-person_(gaming)>)
 - [Field of View](https://whatis.techtarget.com/definition/field-of-view-FOV)
